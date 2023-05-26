@@ -9,9 +9,9 @@ public interface MovieRepository extends JpaRepository<Movies, Long> {
 
 
     Movies create (Movies movies);
-//    Movies save (Movies movies);
-//    Movies findById(long id);
-//    Movies deleteMoviesById(long id);
+    Movies save (Movies movies);
+    Movies findById(long id);
+    void deleteMoviesById(long id);
 
 
 
