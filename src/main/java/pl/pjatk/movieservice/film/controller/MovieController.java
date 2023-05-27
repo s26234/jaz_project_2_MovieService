@@ -33,8 +33,8 @@ public class MovieController {
 //        return ResponseEntity.ok(List.of());
 //    }
     //3C
-    @GetMapping("/movies/{id}}")
-    public ResponseEntity<Movies> getMoviesByIdd(@PathVariable Long id) {
+    @GetMapping("/movies/{id}")
+    public ResponseEntity<Movies> getMoviesById(@PathVariable Long id) {
         return ResponseEntity.ok(movieService.getMovieById(id));
     }
 
@@ -63,7 +63,7 @@ public class MovieController {
 
     }
 
-    @PutMapping("/movies/{id}")
+    @PutMapping("/moviess/{id}")
     public ResponseEntity<Movies> updateAvailable(@PathVariable Long id, @RequestBody Movies movies) {
         return ResponseEntity.ok(movieService.updateAvailable(id,movies));
     }

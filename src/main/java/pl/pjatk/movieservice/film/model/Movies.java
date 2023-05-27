@@ -20,12 +20,12 @@ public class Movies {
         this.category = category;
     }
 
-    public Movies (long id, String name, Category category, boolean isAvailable){
-        this.id = id;
-        this.name = name;
-        this.category = category;
-        this.isAvailable = isAvailable;
-    }
+//    public Movies (long id, String name, Category category, boolean isAvailable){
+//        this.id = id;
+//        this.name = name;
+//        this.category = category;
+//        this.isAvailable = isAvailable;
+//    }
 
     public Movies(String name, Category category){
         this.name = name;

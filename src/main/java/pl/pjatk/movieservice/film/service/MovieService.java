@@ -72,7 +72,7 @@ public class MovieService {
             // throw new ServerException();
             return movies;
         } else {
-            return movieRepository.create(movies);
+            return movieRepository.save(movies);
         }
     }
 
@@ -87,7 +87,7 @@ public class MovieService {
 //    }
 
     public Movies updateMovie(long id, Movies movies) {
-        Movies finder = movieRepository.findById(id);
+        Optional<Movies> finder = movieRepository.findById(id);
         if (finder != null) {
             movies.setName(movies.getName());
             movies.setCategory(movies.getCategory());
@@ -110,7 +110,7 @@ public class MovieService {
         Optional<Movies> getAndDeleteMovieById = movieRepository.findById(id);
         if (getAndDeleteMovieById.isPresent()) {
             Movies movies = getAndDeleteMovieById.get();
-            movieRepository.deleteMoviesById(id);
+            movieRepository.deleteById(id);
             return true;
         } else {
             return false;
@@ -118,9 +118,9 @@ public class MovieService {
     }
 
     public boolean deleteMoviePathvar(long id) {
-        Movies movies = movieRepository.findById(id);
+        Optional<Movies> movies = movieRepository.findById(id);
         if(movies != null) {
-            movieRepository.delete(movies);
+            movieRepository.deleteById(id);
             return true;
         } else {
             return false;
