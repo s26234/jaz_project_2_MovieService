@@ -1,7 +1,6 @@
 package pl.pjatk.movieservice.film.controller;
 
 
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.pjatk.movieservice.film.model.Movies;
@@ -39,10 +38,7 @@ public class MovieController {
     }
 
     //consumes - type of resources accepted to use from client >> produces - type for client
-    @PostMapping(value = "/movies", consumes = {MediaType.APPLICATION_JSON_VALUE,
-            MediaType.APPLICATION_XML_VALUE},
-            produces = {MediaType.APPLICATION_JSON_VALUE,
-                    MediaType.APPLICATION_XML_VALUE})
+    @PostMapping(value = "/movies")
     public ResponseEntity<Movies> create(@RequestBody Movies movies) {
         return ResponseEntity.ok(movieService.create(movies));
     }
@@ -50,6 +46,17 @@ public class MovieController {
     @PutMapping("/movies/{id}")
     public ResponseEntity<Movies> updateMovie(@PathVariable Long id, @RequestBody Movies updateMovie) {
         return ResponseEntity.ok(movieService.updateMovie(id, updateMovie));
+
+//      TO CHECK
+//        try {
+//            Movie existingMovie = movieService.findById(id).get();
+//            existingMovie.setName(movie.getName());
+//            existingMovie.setCategory(movie.getCategory());
+//            return ResponseEntity.ok(existingMovie);
+//        } catch (RuntimeException e) {
+//            return ResponseEntity.notFound().build();
+//        }
+
     }
 
     @DeleteMapping("/movies/{id}")
@@ -67,4 +74,15 @@ public class MovieController {
     public ResponseEntity<Movies> updateAvailable(@PathVariable Long id, @RequestBody Movies movies) {
         return ResponseEntity.ok(movieService.updateAvailable(id,movies));
     }
+
+//    @PutMapping("/available/{id}")
+//    public Movie setMovieAvailable(@PathVariable Long id, @RequestBody Movie movie) {
+//
+//        Optional<Movie> currentMovie = movieService.findById(id);
+//        movie.setIsAvailable(true);
+//        return movieService.setToAvailable();
+//    }
+
+
+
 }

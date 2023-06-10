@@ -8,15 +8,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import pl.pjatk.movieservice.film.model.Movies;
 
-import java.util.Optional;
-
 @Repository
 public interface MovieRepository extends JpaRepository<Movies, Long> {
-@Override
-<S extends Movies> S save(S entity);
-//
-    @Override
-    Optional<Movies> findById(Long aLong);
 
     @Modifying
     @Transactional
